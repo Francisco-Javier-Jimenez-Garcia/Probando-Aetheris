@@ -1,0 +1,184 @@
+// Variables
+$primary-color: #2c3e50;
+$accent-color: #3498db;
+$bg-color: #f9f9f9;
+$text-color: #666;
+$shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+// Reset y base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  color: $text-color;
+  background-color: $bg-color;
+}
+
+// Navegación
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #fff;
+  box-shadow: $shadow;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .logo {
+    font-family: 'Oswald', sans-serif; // Cambia 'Montserrat' o lo que tengas por 'Oswald'
+    font-weight: 700;
+    font-size: 2em;
+    color: $primary-color;
+    letter-spacing: 1px;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+
+    li a {
+      text-decoration: none;
+      color: $primary-color;
+      font-weight: 500;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+}
+
+// Secciones
+.section {
+  padding: 60px 40px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  h1, h2 {
+    color: $primary-color;
+    margin-bottom: 20px;
+  }
+
+  h1 { font-size: 2.5em; }
+  h2 { font-size: 2em; }
+
+  p {
+    max-width: 800px;
+    margin: 0 auto 20px;
+
+    a {
+      color: $accent-color;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Contenedor de videos
+.video-container {
+    margin: 20px auto;
+    max-width: 1200px;
+    display: grid;
+    grid-template-areas: 
+      "video1 video2"
+      ". video3 ."; // Mantendremos esto para la forma de triángulo
+    grid-template-columns: 1fr 1fr; // Dos columnas iguales
+    grid-template-rows: auto auto; // Dos filas
+    gap: 20px;
+    justify-content: center; // Centra el contenido horizontalmente
+    align-content: center; // Centra verticalmente si hay espacio extra
+  
+    iframe.video-1 { 
+      grid-area: video1; 
+      justify-self: end; // Alinea el primer video al final de su celda
+    }
+    iframe.video-2 { 
+      grid-area: video2; 
+      justify-self: start; // Alinea el segundo video al inicio de su celda
+    }
+    iframe.video-3 { 
+      grid-area: video3; 
+      justify-self: center; // Centra el tercer video en su celda
+    }
+  
+    iframe {
+      width: 100%;
+      max-width: 400px;
+      height: 225px;
+      border-radius: 8px;
+      box-shadow: $shadow;
+    }
+  }
+
+// Contenedor de fotos
+.foto-container {
+    margin: 20px auto;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // 2-3 por fila
+    gap: 20px;
+  
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: $shadow;
+    }
+  }
+
+// Contacto
+.contact-info {
+  list-style: none;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: left;
+
+  li {
+    margin: 15px 0;
+    i {
+      margin-right: 10px;
+      color: $accent-color;
+    }
+  }
+}
+
+// Pie de página
+footer {
+  padding: 20px;
+  background-color: $primary-color;
+  color: #fff;
+  text-align: center;
+}
+
+// Responsividad
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    padding: 20px;
+    ul { flex-direction: column; gap: 10px; }
+  }
+  .section { padding: 40px 20px; }
+  .video-container {
+    grid-template-columns: 1fr;
+  }
+}
